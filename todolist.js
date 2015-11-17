@@ -129,6 +129,7 @@ function deleteList(e) {
 function removeListFromDOM(key) {
     var item = document.getElementById(key);
     item.parentNode.removeChild(item);
+    $('.checkbox').checkboxradio("refresh");
 }
 
 function clearListNotes() {
