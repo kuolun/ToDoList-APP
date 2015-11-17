@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="todolist.js"></script>
+    <title>To do list app</title>
+</head>
+
+<body>
+
+    <body>
+        <div data-role="page" data-theme="a">
+            <!--左邊 Panel -->
+            <div data-role="panel" id="myPanel" data-display="reveal">
+                <h2>分類</h2>
+                <p>You can close the panel by clicking outside the panel, pressing the Esc key or by swiping.</p>
+            </div>
+            <!-- Header -->
+            <header data-role="header">
+                <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">分類</a>
+                <h1>To Do List</h1>
+            </header>
+            <!-- 分類下的checkbox -->
+            <div data-role="main" class="ui-content">
+                <!-- 輸入框 -->
+                <input type="text" name="textinput" id="textinput" placeholder="新增待辦事項..." value="">
+                <p><strong>收件匣</strong></p>
+                <ul id="lists">
+                </ul>
+            </div>
+            <div data-role="footer">
+                <h1>Page Footer</h1>
+            </div>
+        </div>
+    </body>
+</body>
+
+</html>
