@@ -1,10 +1,10 @@
 window.onload = init;
 
 function init() {
-    // var enter = document.getElementById("textinput");
+    var enter = document.getElementById("textinput");
     //按下enter後觸發
-    // enter.onkeydown = createList;
-    $('#textinput').keydown(createList);
+    enter.onkeydown = createList;
+    // $('#textinput').keydown(createList);
 
 
     // 如果localStorage裡面有東西，就取出顯示在畫面上
@@ -32,7 +32,6 @@ function getListArray() {
 
 //建立事項
 function createList(e) {
-    console.log("in");
     if (e.keyCode == 13) {
         //1.存到localstorage去
         //取輸入內容
@@ -99,7 +98,7 @@ function addListToDOM(key, listObj) {
 
     //增加delete事件
     // list.onclick = deleteList;
-    $('li').click = deleteList;
+    $('li').click(deleteList);
 
 }
 
@@ -131,8 +130,9 @@ function deleteList(e) {
 }
 
 function removeListFromDOM(key) {
-    var item = document.getElementById(key);
-    item.parentNode.removeChild(item);
+    // var item = document.getElementById(key);
+    // item.parentNode.removeChild(item);
+    $('#' + key).remove();
 }
 
 function clearListNotes() {
