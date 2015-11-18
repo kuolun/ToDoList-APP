@@ -1,6 +1,23 @@
-window.onload = init;
+// window.onload = init;
 
-function init() {
+// function init() {
+//     var enter = document.getElementById("textinput");
+//     //按下enter後觸發
+//     enter.onkeydown = createList;
+//     // $('#textinput').keydown(createList);
+
+
+//     // 如果localStorage裡面有東西，就取出顯示在畫面上
+//     var ListArray = getListArray();
+//     for (var i = 0; i < ListArray.length; i++) {
+//         var key = ListArray[i];
+//         var value = JSON.parse(localStorage[key]);
+//         addListToDOM(key, value);
+//     }
+
+// }
+$(document).on("pagecreate", "#page", function() {
+
     var enter = document.getElementById("textinput");
     //按下enter後觸發
     enter.onkeydown = createList;
@@ -15,7 +32,7 @@ function init() {
         addListToDOM(key, value);
     }
 
-}
+});
 
 function getListArray() {
     //取得存放list的那個array(key為listArray)
@@ -65,6 +82,7 @@ function createList(e) {
 
 
 function addListToDOM(key, listObj) {
+    console.log("add");
     //取得<ul>
     var lists = document.getElementById('lists');
     //建立<li>
@@ -87,10 +105,10 @@ function addListToDOM(key, listObj) {
     label.innerHTML = listObj.value;
 
     // input掛到label下，label掛到li下,li掛到ul下
-
     label.appendChild(input);
     list.appendChild(label);
     lists.appendChild(list);
+
 
     //重整畫面
     $('.checkbox').checkboxradio();
@@ -98,12 +116,16 @@ function addListToDOM(key, listObj) {
 
     //增加delete事件
     // list.onclick = deleteList;
-    $('li').click(deleteList);
+    // 手機要用tap事件(label會被點到)
+    $("div.ui-checkbox").change(function() {
+        $(this).parent().hide();
+    });
+
 
 }
 
 function deleteList(e) {
-
+    console.log(e.target);
     //因被點到的會是label
     //所以要回上2層取li的id
     var key = e.target.parentNode.parentNode.id;
@@ -130,9 +152,9 @@ function deleteList(e) {
 }
 
 function removeListFromDOM(key) {
-    // var item = document.getElementById(key);
-    // item.parentNode.removeChild(item);
-    $('#' + key).remove();
+    var item = document.getElementById(key);
+    item.parentNode.removeChild(item);
+
 }
 
 function clearListNotes() {
